@@ -1,17 +1,30 @@
 version: '3.8'
 
 services:
-  db:
+  postgres:
     image: postgres:latest
-    container_name: postgres_projeto_angular
+    ports:
+      - "5432:5432"
+    container_name: DB_projeto_angular
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 2003
-      POSTGRES_DB: projetoAngular
-    ports:
-      - "8080:5432"
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - ./src/tables/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: password
+      PGADMIN_LISTEN_PORT: 8001
+    ports:
+      - "8001:8001"
+    depends_on:
+      - postgres
 
 volumes:
   pgdata:
