@@ -2,6 +2,7 @@ package io.github.kuihtares.projetoAngular.rest;
 
 import io.github.kuihtares.projetoAngular.model.entity.Cliente;
 import io.github.kuihtares.projetoAngular.model.repository.ClienteRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente salvarCliente( @RequestBody Cliente cliente) {
+    public Cliente salvarCliente( @RequestBody @Valid Cliente cliente) {
         return clienteRepository.save(cliente);
     }
 
@@ -24,7 +25,7 @@ public class ClienteController {
     public Cliente buscarClientePorId(@PathVariable Integer id) {
         return clienteRepository
                 .findById(id)
-                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
     }
 
     @DeleteMapping("{id}")
@@ -36,7 +37,7 @@ public class ClienteController {
                      clienteRepository.delete(cliente);
                      return Void.TYPE; //Somente utilizando esse método pra caso não haja um cliente, ele retornar uma exception.
                  })
-                 .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                 .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
     }
 
     @PutMapping("{id}")
