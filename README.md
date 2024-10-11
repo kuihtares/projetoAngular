@@ -16,6 +16,9 @@ Para fazer o deploy desse projeto rode
   docker-compose up -d
 ```
 
+Se tudo ocorrer bem os conteiners irão ficar dessa forma:
+![img.png](etc/imagemDocker.png)
+
 ## PgAdmin
 
 Foi criado pelo Docker, não há necessidade de utilizar o Software.
