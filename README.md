@@ -1,23 +1,32 @@
 # Projeto Angular
 
-Projeto focado no meu estudo para as tecnologias de Java/Spring/Maven/Docker e principalmente angular na qual eu nunca utilizei.
+Projeto focado no meu estudo para as tecnologias de Java/Spring/Maven/Docker e principalmente Angular na qual eu nunca utilizei.
+
+## Pré-requisitos
+
+* Postgres: [Download](https://www.postgresql.org/download/)
+* Java: [Download](https://www.java.com/pt-BR/download/manual.jsp)
+* Docker: [Download](https://www.docker.com/products/docker-desktop/)
+* IDE (IntelliJ recomendada)
+
+## Instalação
+
+1. Instale o Postgres, Java e Docker conforme os links acima.
+2. Clone o repositório do projeto:
+    ```bash
+    git clone <URL_DO_REPOSITORIO>
+    cd <NOME_DO_REPOSITORIO>
+    ```
 
 ## Deploy
 
-* Nécessario:
-    1. Postgree: https://www.postgresql.org/download/
-    2. Java: https://www.java.com/pt-BR/download/manual.jsp
-    3. Docker: https://www.docker.com/products/docker-desktop/
-    4. E uma IDE da sua escolha, está sendo desenvolvida no IntelliJ
-
-Para fazer o deploy desse projeto rode
+Para fazer o deploy desse projeto, execute:
 
 ```bash
-  docker-compose up -d
+docker-compose up -d
 ```
 
-Se tudo ocorrer bem os conteiners irão ficar dessa forma:
-![img.png](etc/imagemDocker.png)
+Se tudo ocorrer bem, os contêineres irão ficar dessa forma: <img src="etc/imagemDocker.png" alt="imgpng"></img>
 
 ## PgAdmin
 
@@ -48,3 +57,18 @@ Caso utilizar pelo Software pular para o topico de configuração do DB
     3. Salvar e conectar:
         1. Após preencher os campos, clique em Save.
         2. O servidor será adicionado à lista no painel esquerdo e você poderá navegar pelas bases de dados.
+
+# Estrutura do Projeto
+### (v1.0.0)
+````.
+├── src
+│   ├── main
+│   │   ├── java
+│   │   └── resources
+│   └── test
+├── .mvn
+├── Dockerfile
+├── docker-compose.yml
+├── README.md
+└── etc
+````
