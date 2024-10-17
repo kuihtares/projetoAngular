@@ -7,11 +7,11 @@ WORKDIR /app
 # Copiar o arquivo package.json e package-lock.json para o diretório de trabalho
 COPY clientes-app/package*.json ./
 
-# Copiar todo o código do projeto para o diretório de trabalho
-COPY clientes-app ./
-
 # Instalar as dependências do projeto
 RUN npm install
+
+# Copiar todo o código do projeto para o diretório de trabalho
+COPY clientes-app ./
 
 # Construir a aplicação Angular
 RUN npm run build --prod
